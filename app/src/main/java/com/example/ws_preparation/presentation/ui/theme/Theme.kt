@@ -1,4 +1,4 @@
-package com.example.ws_preparation.ui.theme
+package com.example.ws_preparation.presentation.ui.theme
 
 import android.app.Activity
 import android.os.Build
