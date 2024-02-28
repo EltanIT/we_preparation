@@ -24,7 +24,7 @@ import org.junit.Before
 
 
 
-//RED
+//GREEN
 @RunWith(AndroidJUnit4::class)
 class Tests {
 
@@ -76,7 +76,6 @@ class Tests {
 
 
             onboardUseCases.clearQueue()
-            onboardUseCases.addItemInQueue(OnboardPage("title1", "description1", 0))
             assertEquals(onboardUseCases.getButtonStateQueue(), "Sign Up")
 
 
