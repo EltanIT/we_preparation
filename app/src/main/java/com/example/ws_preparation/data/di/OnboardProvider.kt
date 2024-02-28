@@ -8,7 +8,7 @@ import com.example.ws_preparation.domain.useCases.onboard.ClearQueue
 import com.example.ws_preparation.domain.useCases.onboard.CreateDefaultQueue
 import com.example.ws_preparation.domain.useCases.onboard.GetButtonStateQueue
 import com.example.ws_preparation.domain.useCases.onboard.GetItemFromQueue
-import com.example.ws_preparation.domain.useCases.onboard.IsQueueIsEmpty
+import com.example.ws_preparation.domain.useCases.onboard.QueueIsEmpty
 import com.example.ws_preparation.domain.useCases.onboard.OnboardUseCases
 import dagger.Module
 import dagger.Provides
@@ -37,7 +37,7 @@ object OnboardProvider {
         GetButtonStateQueue(queueManger),
         AddItemInQueue(queueManger),
         ClearQueue(queueManger),
-        IsQueueIsEmpty(queueManger),
+        QueueIsEmpty(queueManger),
         CreateDefaultQueue(queueManger)
     )
 

@@ -23,10 +23,13 @@ class OnboardViewModel @Inject constructor(
     var page by mutableStateOf(OnboardPage())
         private set
 
-    var buttonState by mutableStateOf("Next")
+    var nextText by mutableStateOf("Next")
         private set
 
     var skipState by mutableStateOf(false)
+        private set
+
+    var isLastItem by mutableStateOf(false)
         private set
 
 
@@ -37,8 +40,14 @@ class OnboardViewModel @Inject constructor(
     fun getNextPage(){
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                page = onboardUseCases.getItemFromQueue()
-                buttonState = onboardUseCases.getButtonStateQueue()
+                val page = onboardUseCases.getItemFromQueue()
+                val buttonState = onboardUseCases.getButtonStateQueue()
+                withContext(Dispatchers.Main){
+                    this@OnboardViewModel.page = page
+                    this@OnboardViewModel.nextText = buttonState
+                    isLastItem = (buttonState.equals("Sign Up"))
+                }
+                Log.i("onboardClient", page.title)
             }catch (e: Exception){
                 Log.i("onboardClient", e.message.toString())
             }

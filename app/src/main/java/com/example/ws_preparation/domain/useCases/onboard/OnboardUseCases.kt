@@ -10,7 +10,7 @@ class OnboardUseCases(
     val getButtonStateQueue: GetButtonStateQueue,
     val addItemInQueue: AddItemInQueue,
     val clearQueue: ClearQueue,
-    val isQueueIsEmpty: IsQueueIsEmpty,
+    val queueIsEmpty: QueueIsEmpty,
     val createDefaultQueue: CreateDefaultQueue
 )
 

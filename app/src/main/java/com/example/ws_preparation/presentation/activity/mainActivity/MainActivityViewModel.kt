@@ -30,7 +30,7 @@ class MainActivityViewModel @Inject constructor(
     private fun checkQueueState() {
         viewModelScope.launch {
             try {
-                val queueIsEmpty = onboardUseCases.isQueueIsEmpty()
+                val queueIsEmpty = onboardUseCases.queueIsEmpty()
                 if (queueIsEmpty != null){
                     if (queueIsEmpty){
                         withContext(Dispatchers.Main){
@@ -43,9 +43,11 @@ class MainActivityViewModel @Inject constructor(
                     }
                 }else{
                     onboardUseCases.createDefaultQueue()
+                    startDestination = Route.OnboardScreen.route
                 }
                 Log.i("supabaseClient", startDestination)
             }catch (e: Exception){
+                startDestination = Route.SignInScreen.route
                 Log.i("supabaseClient", e.message.toString())
             }
         }

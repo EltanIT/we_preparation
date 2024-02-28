@@ -17,7 +17,9 @@ class GetItemFromQueue(
         if (dataJson!=null){
             val type = object: TypeToken<LinkedList<OnboardPage>>(){}.type
             val list = gson.fromJson(dataJson, type) as LinkedList<OnboardPage>
-            return list.pop()
+            val page = list.pop()
+            queueManger.saveQueue(gson.toJson(list))
+            return page
         }else{
             queueManger.saveQueue(gson.toJson(onboardPageQueueDefault))
             invoke()
