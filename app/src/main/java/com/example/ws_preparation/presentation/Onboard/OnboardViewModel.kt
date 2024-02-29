@@ -41,11 +41,11 @@ class OnboardViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 val page = onboardUseCases.getItemFromQueue()
-                val buttonState = onboardUseCases.getButtonStateQueue()
+                val nextText = onboardUseCases.getButtonStateQueue()
                 withContext(Dispatchers.Main){
                     this@OnboardViewModel.page = page
-                    this@OnboardViewModel.nextText = buttonState
-                    isLastItem = (buttonState.equals("Sign Up"))
+                    this@OnboardViewModel.nextText = nextText
+                    isLastItem = (nextText.equals("Sign Up"))
                 }
                 Log.i("onboardClient", page.title)
             }catch (e: Exception){
