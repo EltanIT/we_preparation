@@ -1,4 +1,4 @@
-package com.example.ws_preparation.presentation.SignUp.components
+package com.example.ws_preparation.presentation.common
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -14,6 +14,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ws_preparation.presentation.common.CustomTextFieldAuthorization
+import com.example.ws_preparation.presentation.ui.theme.Gray2
 import com.example.ws_preparation.presentation.ui.theme.Roboto
 
 
@@ -33,7 +34,7 @@ fun TextFieldGroup(
                 lineHeight = 16.sp,
                 fontFamily = FontFamily(Roboto),
                 fontWeight = FontWeight(500),
-                color = Color.White
+                color = Gray2
             )
         )
         Spacer(modifier = Modifier.height(8.dp))
