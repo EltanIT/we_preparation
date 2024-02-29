@@ -11,4 +11,7 @@ object Constants {
     object PreferencesKeys{
         val QUEUE =  stringPreferencesKey(Constants.QUEUE)
     }
+
+
+    val emailValidPattern = "^[a-z0-9]+([@]{1})[a-z0-9]+([.]{1})+[a-z]+$"
 }
