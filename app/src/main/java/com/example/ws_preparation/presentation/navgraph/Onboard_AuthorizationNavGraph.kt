@@ -50,8 +50,5 @@ fun Onboard_AuthorizationNavGraph(
             val viewModel: OTPVerificationViewModel = hiltViewModel()
             OTPVerificationScreen(viewModel, navHostController)
         }
-        composable(Route.HomeScreen.route){
-            HomeScreen()
-        }
     }
 }

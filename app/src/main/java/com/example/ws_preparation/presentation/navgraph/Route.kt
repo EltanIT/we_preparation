@@ -10,7 +10,18 @@ sealed class Route(
     object ForgotPasswordScreen: Route("ForgotPasswordScreen")
     object OTPVerificationScreen: Route("OTPVerificationScreen?email={email}")
     object NewPasswordScreen: Route("NewPasswordScreen?email={email}")
-    object HomeScreen: Route("HomeScreen")
+    object HomeScreen: Route("Home")
+    object WalletScreen: Route("Wallet")
+    object TrackScreen: Route("Track")
+    object ProfileScreen: Route("Profile")
+
+
+    object SendAPackageScreen: Route("SendAPackageScreen")
+    object AddPaymentMethodScreen: Route("AddPaymentMethodScreen")
+    object NotificationScreen: Route("NotificationScreen")
+    object MainScreen: Route("MainScreen")
+    object SendAPackageReceiptScreen: Route("SendAPackageReceiptScreen?data={data}")
+    object TransactionSuccessfulScreen: Route("TransactionSuccessfulScreen?uuid={uuid}")
 
 
 

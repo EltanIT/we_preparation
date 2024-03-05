@@ -1,6 +1,6 @@
 package com.example.ws_preparation.domain.useCases.onboard
 
-import com.example.ws_preparation.domain.entities.OnboardPage
+import com.example.ws_preparation.domain.model.OnboardPage
 import com.example.ws_preparation.domain.manger.QueueManger
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
