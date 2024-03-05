@@ -1,4 +1,4 @@
-package com.example.ws_preparation.domain.entities
+package com.example.ws_preparation.domain.model
 
 import androidx.annotation.DrawableRes
 import com.example.ws_preparation.R

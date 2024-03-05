@@ -3,13 +3,13 @@ package com.example.ws_preparation
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.example.ws_preparation.data.manger.QueueMangerImpl
-import com.example.ws_preparation.domain.entities.OnboardPage
+import com.example.ws_preparation.domain.model.OnboardPage
 import com.example.ws_preparation.domain.useCases.onboard.AddItemInQueue
 import com.example.ws_preparation.domain.useCases.onboard.ClearQueue
 import com.example.ws_preparation.domain.useCases.onboard.CreateDefaultQueue
 import com.example.ws_preparation.domain.useCases.onboard.GetButtonStateQueue
 import com.example.ws_preparation.domain.useCases.onboard.GetItemFromQueue
-import com.example.ws_preparation.domain.useCases.onboard.IsQueueIsEmpty
+import com.example.ws_preparation.domain.useCases.onboard.QueueIsEmpty
 import com.example.ws_preparation.domain.useCases.onboard.OnboardUseCases
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -36,7 +36,7 @@ class Tests {
             GetButtonStateQueue(queueManger),
             AddItemInQueue(queueManger),
             ClearQueue(queueManger),
-            IsQueueIsEmpty(queueManger),
+            QueueIsEmpty(queueManger),
             CreateDefaultQueue(queueManger)
         )
     }
@@ -56,9 +56,9 @@ class Tests {
     fun correctGetItemFromQueue() {
         coroutineScope.launch {
             onboardUseCases.clearQueue()
-            val sizeBeforeAddItemInQueue = onboardUseCases.isQueueIsEmpty()
+            val sizeBeforeAddItemInQueue = onboardUseCases.queueIsEmpty()
             onboardUseCases.addItemInQueue(OnboardPage("title", "description", 0))
-            val sizeAfterAddItemInQueue = onboardUseCases.isQueueIsEmpty()
+            val sizeAfterAddItemInQueue = onboardUseCases.queueIsEmpty()
             assertTrue(sizeBeforeAddItemInQueue == sizeAfterAddItemInQueue)
         }
     }
@@ -85,11 +85,11 @@ class Tests {
         coroutineScope.launch {
             onboardUseCases.clearQueue()
             //переход произошел
-            assertTrue(onboardUseCases.isQueueIsEmpty() == true)
+            assertTrue(onboardUseCases.queueIsEmpty() == true)
 
             onboardUseCases.addItemInQueue(OnboardPage("title1", "description1", 0))
             //переход отсутствует
-            assertFalse(onboardUseCases.isQueueIsEmpty() == true)
+            assertFalse(onboardUseCases.queueIsEmpty() == true)
         }
     }
 

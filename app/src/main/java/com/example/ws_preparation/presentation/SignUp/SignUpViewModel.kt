@@ -7,7 +7,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.ws_preparation.data.util.Constants
-import com.example.ws_preparation.domain.entities.ProfileData
+import com.example.ws_preparation.domain.model.ProfileData
 import com.example.ws_preparation.domain.repository.CreateProfileRepository
 import com.example.ws_preparation.domain.repository.SignUpRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -25,7 +25,7 @@ class SignUpViewModel @Inject constructor(
     private val createProfileRepository =  CreateProfileRepository()
 
 
-    var profile by mutableStateOf(ProfileData())
+    var profile by mutableStateOf(SignUpData())
         private set
 
     var confirmPassword by mutableStateOf("")
@@ -79,8 +79,8 @@ class SignUpViewModel @Inject constructor(
     fun signUp(){
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                signUpRepository.invoke(profile)
-                createProfileRepository.invoke(profile)
+                signUpRepository.invoke(profile.email, profile.password)
+                createProfileRepository.invoke(profile.fullName, profile.email, profile.phoneNumber)
                 withContext(Dispatchers.Main){
                     exception = "true"
                 }

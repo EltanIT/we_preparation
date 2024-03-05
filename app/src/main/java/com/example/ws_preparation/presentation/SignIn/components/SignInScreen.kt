@@ -1,5 +1,6 @@
 package com.example.ws_preparation.presentation.SignIn.components
 
+import android.content.Intent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,6 +15,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -21,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.ws_preparation.presentation.SignIn.SignInViewModel
+import com.example.ws_preparation.presentation.activity.HomeActivity
 import com.example.ws_preparation.presentation.common.CustomExceptionDialogAlert
 import com.example.ws_preparation.presentation.common.PasswordTextFieldGroup
 import com.example.ws_preparation.presentation.common.TextFieldGroup
@@ -36,6 +39,8 @@ fun SignInScreen(
     viewModel: SignInViewModel,
     navController: NavController
 ) {
+
+    val context = LocalContext.current
 
     val data by remember{
         derivedStateOf {
@@ -57,7 +62,10 @@ fun SignInScreen(
 
     if (exception.value.isNotEmpty()){
         if (exception.value == "true"){
-                navController.navigate(Route.HomeScreen.route)
+            val intent = Intent(context, HomeActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            context.startActivity(intent)
         }else{
             CustomExceptionDialogAlert(exception = exception.value) {
                 viewModel.closeException()
