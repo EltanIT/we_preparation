@@ -42,7 +42,6 @@ class SendAPackageReceiptViewModel @Inject constructor(
             data.chargesPackageData.deliveryCharges = "N$delivery"
             data.chargesPackageData.taxCharges = "N$taxCharges"
             data.chargesPackageData.packageTotal = "N"+(delivery+instantDelivery+taxCharges).toString()
-            isGetting = true
         }
 
 
