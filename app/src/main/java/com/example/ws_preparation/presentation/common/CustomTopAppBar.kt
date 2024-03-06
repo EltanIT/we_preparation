@@ -4,8 +4,8 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
@@ -21,7 +21,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ws_preparation.R
 import com.example.ws_preparation.presentation.ui.theme.Gray2
-import com.example.ws_preparation.presentation.ui.theme.PrimaryColor
 import com.example.ws_preparation.presentation.ui.theme.Roboto
 
 
@@ -36,9 +35,10 @@ onBackClickListener: () -> Unit
         colors = CardDefaults.cardColors(
             containerColor = Color.White
         ),
-    elevation = CardDefaults.cardElevation(
-        defaultElevation = 25.dp
-    )) {
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = 8.dp
+        ),
+        shape = RoundedCornerShape(0.dp)) {
         Box(
             Modifier
                 .fillMaxWidth()

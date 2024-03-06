@@ -1,4 +1,4 @@
-package com.example.ws_preparation.presentation.SendAPackageReceipt.components
+package com.example.ws_preparation.presentation.Wallet.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -28,7 +28,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.ws_preparation.presentation.SendAPackageReceipt.SendAPackageReceiptViewModel
+import com.example.ws_preparation.presentation.SendAPackage2.SendAPackage2ViewModel
 import com.example.ws_preparation.presentation.common.ChargesInformation
 import com.example.ws_preparation.presentation.common.CustomTopAppBar
 import com.example.ws_preparation.presentation.common.PackageInformation
@@ -38,8 +38,8 @@ import com.example.ws_preparation.presentation.ui.theme.Roboto
 
 
 @Composable
-fun SendAPackageReceiptScreen(
-    viewModel: SendAPackageReceiptViewModel,
+fun SendAPackage2Screen(
+    viewModel: SendAPackage2ViewModel,
     navController: NavController
 ) {
 
@@ -48,16 +48,17 @@ fun SendAPackageReceiptScreen(
             mutableStateOf(viewModel.data)
         }
     }
-    val statePost by remember{
+
+    val stateSuccessful by remember{
         derivedStateOf {
-            mutableStateOf(viewModel.statePost)
+            mutableStateOf(viewModel.stateSuccessful)
         }
     }
 
-    if (statePost.value.equals("true")){
-        navController.navigate(Route.TransactionSuccessfulScreen.route.replace("{uuid}", data.value.uuid))
+    if (stateSuccessful.value){
+        navController.navigate(Route.DeliverySuccessfulScreen.route.replace("{order_id}", data.value.order_id))
     }
-    
+
     Column(
         Modifier
             .fillMaxSize()
@@ -81,18 +82,31 @@ fun SendAPackageReceiptScreen(
 
             Spacer(modifier = Modifier.height(8.dp))
             ChargesInformation(chargesPackageData = data.value.chargesPackageData)
-            Spacer(modifier = Modifier.height(46.dp))
+            Spacer(modifier = Modifier.height(24.dp))
+
+            Text(text = "Click on  delivered for successful delivery and rate rider or report missing item",
+                style = TextStyle(
+                    fontSize = 12.sp,
+                    lineHeight = 16.sp,
+                    fontWeight = FontWeight(400),
+                    fontFamily = FontFamily(Roboto),
+                    color = Color(0xff2F80ED)
+                )
+            )
+
+            Spacer(modifier = Modifier.height(24.dp))
 
             Row(modifier = Modifier.fillMaxWidth()) {
-                    Button(onClick = { navController.popBackStack() },
-                        modifier = Modifier
-                            .clip(RoundedCornerShape(8.dp))
-                            .height(48.dp)
-                            .border(1.dp, PrimaryColor, RoundedCornerShape(8.dp)),
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = Color.White,
-                        )) {
-                        Text(text = "Edit package",
+                Button(onClick = { navController.popBackStack() },
+                    modifier = Modifier
+                        .weight(1f)
+                        .clip(RoundedCornerShape(8.dp))
+                        .height(48.dp)
+                        .border(1.dp, PrimaryColor, RoundedCornerShape(8.dp)),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color.White,
+                    )) {
+                    Text(text = "Report",
                         style = TextStyle(
                             fontSize = 16.sp,
                             lineHeight = 16.sp,
@@ -100,19 +114,21 @@ fun SendAPackageReceiptScreen(
                             fontWeight = FontWeight(700),
                             color = PrimaryColor
                         )
-                        )
-                    }
+                    )
+                }
                 Spacer(modifier = Modifier.width(24.dp))
                 Button(onClick = {
-                    viewModel.post()},
+                    viewModel.successfulDelivery()},
                     modifier = Modifier
+                        .weight(1f)
                         .height(48.dp)
                         .clip(RoundedCornerShape(8.dp)),
                     colors = ButtonDefaults.buttonColors(
                         containerColor = PrimaryColor,
                     ),
-                shape = RoundedCornerShape(8.dp)) {
-                    Text(text = "Make payment",
+                    shape = RoundedCornerShape(8.dp)
+                ) {
+                    Text(text = "Successful",
                         style = TextStyle(
                             fontSize = 16.sp,
                             lineHeight = 16.sp,
@@ -122,8 +138,11 @@ fun SendAPackageReceiptScreen(
                         )
                     )
                 }
-                
+
             }
         }
     }
+
+
+
 }

@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -71,10 +72,10 @@ fun ProfileScreen(
         Column(
             Modifier
                 .fillMaxSize()
-                .background(Color.White)
+                .background(TransparentColor)
                 .padding(horizontal = 24.dp)) {
-            Spacer(modifier = Modifier.height(34.5.dp))
-            ProfileRow(name = profile.value.fullName, image = 0, balance = profile.value.fullName) {
+            ProfileRow(name = profile.value.fullName, image = 0, balance = profile.value.fullName,
+            padding = PaddingValues(34.5.dp)) {
                 
             }
             Spacer(modifier = Modifier.height(26.5.dp).background(TransparentColor))

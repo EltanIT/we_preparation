@@ -9,5 +9,6 @@ data class ProfileData(
     val phoneNumber: String = "",
     val email: String = "",
     val balance: String = "",
+    val image: String = "",
     val role: String = "",
 )

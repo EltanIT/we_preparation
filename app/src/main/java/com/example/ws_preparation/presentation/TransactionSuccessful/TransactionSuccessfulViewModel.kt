@@ -27,6 +27,9 @@ class TransactionSuccessfulViewModel @Inject constructor(
     }
 
 
+    init {
+        timer()
+    }
 
     fun timer(){
         object: CountDownTimer(2000, 1000){
