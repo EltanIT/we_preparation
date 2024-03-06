@@ -24,5 +24,9 @@ sealed class Route(
     object TransactionSuccessfulScreen: Route("TransactionSuccessfulScreen?uuid={uuid}")
 
 
+    object SendAPackage2Screen: Route("SendAPackage2Screen")
+    object DeliverySuccessfulScreen: Route("DeliverySuccessfulScreen?order_id={order_id}")
+
+
 
 }

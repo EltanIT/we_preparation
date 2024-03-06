@@ -16,16 +16,16 @@ class MainScreenViewModel @Inject constructor(): ViewModel() {
         NavigationItem(
             "Home",
             R.drawable.ic_selected_home,
-            R.drawable.ic_profile_unselected
+            R.drawable.ic_home_unselected
         ),
         NavigationItem(
             "Wallet",
-            R.drawable.ic_unselected_wallet,
+            R.drawable.ic_wallet_selected,
             R.drawable.ic_unselected_wallet
         ),
         NavigationItem(
             "Track",
-            R.drawable.ic_track_unselected,
+            R.drawable.ic_track_selected,
             R.drawable.ic_track_unselected
         ),
         NavigationItem(
