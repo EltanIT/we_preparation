@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ws_preparation.presentation.common.CustomPrivacyCheckBox
 import com.example.ws_preparation.presentation.ui.theme.Gray2
+import com.example.ws_preparation.presentation.ui.theme.PrimaryColor
 import com.example.ws_preparation.presentation.ui.theme.Roboto
 import com.example.ws_preparation.presentation.ui.theme.Text4
 
@@ -25,6 +26,7 @@ import com.example.ws_preparation.presentation.ui.theme.Text4
 @Composable
 fun StatusItem(
     isTrue: Boolean,
+    isActive: Boolean,
     isLast: Boolean,
     title: String,
     date: String
@@ -52,7 +54,7 @@ fun StatusItem(
                     lineHeight = 16.sp,
                     fontWeight = FontWeight(400),
                     fontFamily = FontFamily(Roboto),
-                    color = Gray2
+                    color = if (isActive) PrimaryColor else Gray2
                 )
             )
             Spacer(modifier = Modifier.height(4.dp))

@@ -74,7 +74,7 @@ class SendAPackageViewModel @Inject constructor(): ViewModel() {
 
     fun createPackage() {
         if (packageData.uuid.isEmpty()){
-            packageData.uuid = UUID.randomUUID().toString()
+            packageData.uuid = "R-" + UUID.randomUUID().toString()
         }
         packageData = packageData.copy(packageDetails = packageDetails)
         packageData = packageData.copy(originDetails = originDetails)

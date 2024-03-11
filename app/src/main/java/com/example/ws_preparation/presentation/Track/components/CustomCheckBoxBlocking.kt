@@ -26,11 +26,10 @@ fun CustomCheckBoxBlocking(
     isChecked: Boolean,
 ) {
 
-
     Box(
         modifier = Modifier
             .size(14.dp)
-            .border(if (isChecked) 1.dp else 0.dp, PrimaryColor, RoundedCornerShape(2.dp))
+            .border(1.dp ,if (isChecked) PrimaryColor else Color.White, RoundedCornerShape(2.dp))
             .clip(RoundedCornerShape(2.dp))
             .background(if (isChecked) PrimaryColor else Color(0xffE0E0E0)),
         contentAlignment = Alignment.Center) {

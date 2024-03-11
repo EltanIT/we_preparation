@@ -1,7 +1,6 @@
 package com.example.ws_preparation.data.util
 
 import androidx.datastore.preferences.core.stringPreferencesKey
-import androidx.datastore.preferences.preferencesDataStore
 
 object Constants {
 
@@ -13,5 +12,5 @@ object Constants {
     }
 
 
-    val emailValidPattern = "^[a-z0-9]+([@]{1})[a-z0-9]+([.]{1})+[a-z]+$"
+    val emailValidPattern = "^[a-zA-Z0-9]+([@]{1})[a-zA-Z0-9]+([.]{1})+[a-z]"
 }

@@ -94,14 +94,14 @@ class DeliverySuccessfulViewModel @Inject constructor(
 
     fun rotateInit(context: Context) {
         sensorManager = context.getSystemService(Context.SENSOR_SERVICE) as SensorManager
-        accelerometer =sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
+        accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
         accelerometer?.let { sensorManager.registerListener(this, it, SensorManager.SENSOR_DELAY_NORMAL) }
     }
 
     override fun onSensorChanged(event: SensorEvent?) {
         event?.let {
-            val x =event.values[0]
-            if (x <= -5){
+            val x = event.values[0]
+            if (x <= -5.6){
                 if (isRatingRedact){
                     isRatingRedact = false
                     if (rating!=5){
@@ -109,14 +109,14 @@ class DeliverySuccessfulViewModel @Inject constructor(
                     }
 
                 }
-            }else if (x >= 5){
+            }else if (x >= 5.6){
                 if (isRatingRedact){
                     isRatingRedact = false
                     if (rating!=0){
                         rating--
                     }
                 }
-            }else if (x in -1.5..1.5) {
+            }else if (x in -2.0..2.0) {
                 isRatingRedact = true
             }
         }

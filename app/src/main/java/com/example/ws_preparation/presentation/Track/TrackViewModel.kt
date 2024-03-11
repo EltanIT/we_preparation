@@ -39,7 +39,7 @@ class TrackViewModel @Inject constructor(
             try {
                 val data = getLastPackageUUIDRepository.getPackageTrack()
                 withContext(Dispatchers.Main){
-                    uuid = data.order_id
+                    uuid = data.uuid
                 }
                 getStatus()
             }catch (e: Exception){

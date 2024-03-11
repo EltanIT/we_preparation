@@ -17,7 +17,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class OnboardViewModel @Inject constructor(
-    private val onboardUseCases: OnboardUseCases
+    val onboardUseCases: OnboardUseCases
 ): ViewModel() {
 
     var page by mutableStateOf(OnboardPage())
@@ -27,6 +27,9 @@ class OnboardViewModel @Inject constructor(
         private set
 
     var skipState by mutableStateOf(false)
+        private set
+
+    var signInState by mutableStateOf(false)
         private set
 
     var isLastItem by mutableStateOf(false)
@@ -61,6 +64,20 @@ class OnboardViewModel @Inject constructor(
                 onboardUseCases.clearQueue()
                 withContext(Dispatchers.Main){
                     skipState = true
+                }
+            }catch (e: Exception){
+                Log.i("onboardClient", e.message.toString())
+            }
+        }
+    }
+
+    fun signIn() {
+        viewModelScope.launch(Dispatchers.IO)
+        {
+            try {
+                val state = onboardUseCases.queueIsEmpty()
+                withContext(Dispatchers.Main){
+                    signInState = state?:true
                 }
             }catch (e: Exception){
                 Log.i("onboardClient", e.message.toString())

@@ -46,6 +46,13 @@ fun OnboardScreen(
 
     }
 
+    val signInState by remember{
+        derivedStateOf {
+            viewModel.signInState
+        }
+
+    }
+
     val isLastItem by remember{
         derivedStateOf {
             viewModel.isLastItem
@@ -57,6 +64,11 @@ fun OnboardScreen(
     if (skipState){
         navController.popBackStack()
         navController.navigate(Route.SignUpScreen.route)
+    }
+
+    if (signInState){
+        navController.popBackStack()
+        navController.navigate(Route.SignInScreen.route)
     }
 
     Column(
@@ -83,8 +95,7 @@ fun OnboardScreen(
                         viewModel.getNextPage()
                     }
                 }) {
-                navController.popBackStack()
-                navController.navigate(Route.SignInScreen.route)
+                viewModel.signIn()
             }
         }
     }
