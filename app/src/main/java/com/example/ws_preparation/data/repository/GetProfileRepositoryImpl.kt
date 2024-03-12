@@ -9,10 +9,15 @@ import io.github.jan.supabase.postgrest.query.Columns
 import kotlinx.serialization.json.Json
 
 class GetProfileRepositoryImpl: GetProfileRepository {
-    override suspend fun getProfile(): ProfileData {
+    override suspend fun getProfile(id: String): ProfileData {
        val data = client.postgrest["profile"].select{
             filter {
-                eq("user_id", client.auth.currentUserOrNull()?.id?:"")
+                if (id.isEmpty()){
+                    eq("user_id", client.auth.currentUserOrNull()?.id?:"")
+                }else{
+                    eq("user_id", id)
+                }
+
             }
             single()
         }

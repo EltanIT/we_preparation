@@ -26,6 +26,9 @@ sealed class Route(
 
     object SendAPackage2Screen: Route("SendAPackage2Screen")
     object DeliverySuccessfulScreen: Route("DeliverySuccessfulScreen?order_id={order_id}")
+    object ChatsScreen: Route("ChatsScreen")
+    object ChatsRiderScreen: Route("ChatsRiderScreen?user_id={user_id}")
+    object CallRiderScreen: Route("CallRiderScreen?user_id={user_id}")
 
 
 

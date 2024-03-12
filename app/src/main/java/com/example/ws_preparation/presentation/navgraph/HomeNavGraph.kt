@@ -11,7 +11,8 @@ import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.ws_preparation.presentation.Home.HomeScreen
+import com.example.ws_preparation.presentation.Home.HomeViewModel
+import com.example.ws_preparation.presentation.Home.components.HomeScreen
 import com.example.ws_preparation.presentation.Profile.ProfileViewModel
 import com.example.ws_preparation.presentation.Track.TrackViewModel
 import com.example.ws_preparation.presentation.Wallet.WalletViewModel
@@ -32,7 +33,8 @@ fun HomeNavGraph(
             .background(Color.White)
             .padding(paddingValues)) {
         composable(Route.HomeScreen.route) {
-            HomeScreen(mainNavHostController)
+            val viewModel: HomeViewModel = hiltViewModel()
+            HomeScreen(viewModel, mainNavHostController)
         }
         composable(Route.WalletScreen.route) {
             val viewModel: WalletViewModel = hiltViewModel()
