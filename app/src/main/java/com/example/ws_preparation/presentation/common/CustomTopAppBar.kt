@@ -42,12 +42,13 @@ onBackClickListener: () -> Unit
         Box(
             Modifier
                 .fillMaxWidth()
-                .padding(top = 24.dp, bottom = 15.dp, start=15.dp, end = 15.dp)) {
+                .padding(top = 24.dp, bottom = 15.dp, start=0.dp, end = 0.dp)) {
                 if (isBackStack){
                     Image(painter = painterResource(id = R.drawable.ic_back),
                         contentDescription = null,
                     modifier = Modifier
                         .align(Alignment.CenterStart)
+                        .padding(start = 15.dp)
                         .clickable { onBackClickListener() })
                 }
             Text(text = title,

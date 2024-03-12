@@ -2,7 +2,7 @@ package com.example.ws_preparation.domain.repository
 
 import com.example.ws_preparation.domain.model.ProfileData
 
-interface GetProfileRepository {
+interface GetChatIdRepository {
 
-        suspend fun getProfile(id: String = ""): ProfileData
+        suspend fun get(recipient_id: String, role: String): String
 }

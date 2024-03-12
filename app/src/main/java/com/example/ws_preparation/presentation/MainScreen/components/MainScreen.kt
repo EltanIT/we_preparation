@@ -67,7 +67,7 @@ fun MainScreen(
             containerColor = Color.White
         )) {
             Row(Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceEvenly) {
+            horizontalArrangement = Arrangement.SpaceAround) {
                 repeat(navigationList.size){index ->
                     Column(horizontalAlignment = Alignment.CenterHorizontally,
                         modifier = Modifier.clickable {
@@ -95,7 +95,7 @@ fun MainScreen(
                             color = if (selectedIndex.value==index) PrimaryColor else Gray2
                         )
                         )
-                        Spacer(modifier = Modifier.height(3.dp))
+                        Spacer(modifier = Modifier.height(9.dp))
 
                     }
                 }

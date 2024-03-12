@@ -11,7 +11,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.ws_preparation.presentation.ForgotPassword.ForgotPasswordViewModel
 import com.example.ws_preparation.presentation.ForgotPassword.components.ForgotPasswordScreen
-import com.example.ws_preparation.presentation.Home.HomeScreen
 import com.example.ws_preparation.presentation.OTPVerification.OTPVerificationViewModel
 import com.example.ws_preparation.presentation.OTPVerification.components.OTPVerificationScreen
 import com.example.ws_preparation.presentation.Onboard.OnboardViewModel

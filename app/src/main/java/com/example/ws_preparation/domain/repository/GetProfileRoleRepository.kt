@@ -2,7 +2,7 @@ package com.example.ws_preparation.domain.repository
 
 import com.example.ws_preparation.domain.model.ProfileData
 
-interface GetProfileRepository {
+interface GetProfileRoleRepository {
 
-        suspend fun getProfile(id: String = ""): ProfileData
+        suspend fun getRole(): String
 }
