@@ -79,6 +79,9 @@ fun ChatRiderScreen(
                 .padding(horizontal = 24.dp)) {
             LazyColumn(Modifier.weight(1f)){
                 items(messageHistory.size){
+                    if (it==0){
+                        Spacer(modifier = Modifier.height(30.dp))
+                    }
                     Box(
                         Modifier
                             .fillMaxWidth()
@@ -90,8 +93,7 @@ fun ChatRiderScreen(
                                     if (messageHistory[it].recipient == viewModel.recipient_id) Alignment.CenterEnd
                                     else Alignment.CenterStart
                                 )) {
-                            Card(modifier = Modifier.fillMaxWidth(),
-                            shape = RoundedCornerShape(8.dp),
+                            Card(shape = RoundedCornerShape(8.dp),
                             elevation = CardDefaults.cardElevation(
                                 0.dp
                             ),
@@ -105,7 +107,7 @@ fun ChatRiderScreen(
                                     lineHeight = 16.sp,
                                     fontFamily = FontFamily(Roboto),
                                     fontWeight = FontWeight(500),
-                                    color =  if (messageHistory[it].recipient == viewModel.recipient_id) Text4 else Color.White
+                                    color =  if (messageHistory[it].recipient == viewModel.recipient_id) Color.White else Text4 
                                 )
                                 )
                             }
