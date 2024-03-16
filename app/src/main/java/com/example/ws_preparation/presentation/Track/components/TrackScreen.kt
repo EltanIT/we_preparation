@@ -11,14 +11,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavController
-import com.example.ws_preparation.domain.model.DeliveryData
 import com.example.ws_preparation.presentation.Track.TrackViewModel
 import com.example.ws_preparation.presentation.Track.components.TrackDeliveryInfo
 import com.example.ws_preparation.presentation.Track.components.TrackMap
 import com.example.ws_preparation.presentation.navgraph.Route
-import com.example.ws_preparation.presentation.ui.theme.TransparentColor
-import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import com.google.android.gms.maps.model.LatLng
+import com.yandex.mapkit.geometry.Point
 
 
 @Composable
@@ -45,8 +42,11 @@ fun TrackScreen(
             .fillMaxSize()
             .background(Color.White)) {
         TrackMap(
-            originCoordinate = LatLng(0.0, 0.0),
-            destinationCoordinates = listOf(LatLng(0.0, 0.0)))
+            originCoordinate = Point(51.765575, 55.123262),
+            destinationCoordinates = listOf(
+                Point(51.767435, 55.122503),
+                Point(51.766531, 55.127980),
+            ))
         TrackDeliveryInfo(uuid = uuid.value, deliveryData = status.value){
             navController.navigate(Route.SendAPackage2Screen.route)
         }

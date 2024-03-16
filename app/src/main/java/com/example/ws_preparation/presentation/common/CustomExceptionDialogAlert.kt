@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -19,6 +20,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.window.DialogProperties
 import com.example.ws_preparation.presentation.ui.theme.Gray2
 import com.example.ws_preparation.presentation.ui.theme.PrimaryColor
 import com.example.ws_preparation.presentation.ui.theme.Roboto
@@ -31,14 +33,13 @@ fun CustomExceptionDialogAlert(
     exception: String,
     onCloseDialog: () -> Unit
 ) {
-    
-    AlertDialog(onDismissRequest = {onCloseDialog},
-        modifier = Modifier.padding(24.dp)
-    ) {
-        Column(
-            Modifier
-                .background(Color.White)
-                .fillMaxWidth()) {
+
+    AlertDialog(
+        onDismissRequest = { onCloseDialog() },
+        containerColor = Color.White,
+        shape = RoundedCornerShape(8.dp),
+        confirmButton = {},
+        title = {
             Text(text = "Ошибка",
                 style = TextStyle(
                 fontSize = 20.sp,
@@ -47,7 +48,8 @@ fun CustomExceptionDialogAlert(
                 fontWeight = FontWeight(500),
                 color = Text4
             ))
-            Spacer(modifier = Modifier.height(8.dp))
+                },
+        text = {
             Text(text = exception,
                 style = TextStyle(
                     fontSize = 16.sp,
@@ -55,9 +57,9 @@ fun CustomExceptionDialogAlert(
                     fontFamily = FontFamily(Roboto),
                     fontWeight = FontWeight(400),
                     color = Gray2
-                )
-            )
-            Spacer(modifier = Modifier.height(8.dp))
+                ))
+        },
+        dismissButton = {
             Button(onClick = {onCloseDialog()},
             colors = ButtonDefaults.buttonColors(
                 containerColor = PrimaryColor
@@ -72,5 +74,48 @@ fun CustomExceptionDialogAlert(
                     ))
             }
         }
-    }
+    )
+    
+//    AlertDialog(
+//        onDismissRequest = {onCloseDialog},
+//        modifier = Modifier.padding(24.dp)
+//    ) {
+//        Column(
+//            Modifier
+//                .background(Color.White)
+//                .fillMaxWidth()) {
+//            Text(text = "Ошибка",
+//                style = TextStyle(
+//                fontSize = 20.sp,
+//                lineHeight = 20.sp,
+//                fontFamily = FontFamily(Roboto),
+//                fontWeight = FontWeight(500),
+//                color = Text4
+//            ))
+//            Spacer(modifier = Modifier.height(8.dp))
+//            Text(text = exception,
+//                style = TextStyle(
+//                    fontSize = 16.sp,
+//                    lineHeight = 16.sp,
+//                    fontFamily = FontFamily(Roboto),
+//                    fontWeight = FontWeight(400),
+//                    color = Gray2
+//                )
+//            )
+//            Spacer(modifier = Modifier.height(8.dp))
+//            Button(onClick = {onCloseDialog()},
+//            colors = ButtonDefaults.buttonColors(
+//                containerColor = PrimaryColor
+//            )) {
+//                Text(text = "Ок",
+//                    style = TextStyle(
+//                        fontSize = 16.sp,
+//                        lineHeight = 15.sp,
+//                        fontFamily = FontFamily(Roboto),
+//                        fontWeight = FontWeight(500),
+//                        color = Color.White
+//                    ))
+//            }
+//        }
+//    }
 }

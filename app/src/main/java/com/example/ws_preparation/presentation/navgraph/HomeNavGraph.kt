@@ -19,6 +19,8 @@ import com.example.ws_preparation.presentation.Wallet.WalletViewModel
 import com.example.ws_preparation.presentation.Wallet.components.ProfileScreen
 import com.example.ws_preparation.presentation.Wallet.components.TrackScreen
 import com.example.ws_preparation.presentation.Wallet.components.WalletScreen
+import com.example.ws_preparation.presentation.ui.theme.TransparentColor
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 
 @Composable
@@ -28,6 +30,8 @@ fun HomeNavGraph(
     startDestination: String,
     paddingValues: PaddingValues
 ) {
+    val systemUiController = rememberSystemUiController()
+
     NavHost(navHostController, startDestination,
         modifier= Modifier
             .background(Color.White)
